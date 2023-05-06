@@ -6,7 +6,7 @@ import '../modules/main/widgets/zoom_drawer_widget.dart';
 import 'app_routers.dart';
 
 class AppPages {
-  static const initial = AppRouters.auth;
+  static const initial = AppRouters.main;
 
   static final routes = [
     GetPage(

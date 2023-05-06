@@ -11,6 +11,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
   runApp(const MyApp());
 }
 
@@ -21,9 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'My App',
-      theme: ThemeData(
-        appBarTheme: const AppBarTheme(),
-      ),
+      theme: ThemeData(appBarTheme: const AppBarTheme()),
       home: const SplashScreen(),
       initialBinding: ApiServiceBinding(),
       getPages: AppPages.routes,

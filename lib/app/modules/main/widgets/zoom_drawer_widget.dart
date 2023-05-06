@@ -23,7 +23,7 @@ class ZoomDrawePage extends GetView<MyDrawerController> {
         angle: -0.0,
         menuBackgroundColor: MyColors.background,
         drawerShadowsBackgroundColor: Colors.grey,
-        slideWidth: MediaQuery.of(context).size.width * 0.65,
+        slideWidth: MediaQuery.of(context).size.width * 0.68,
       ),
     );
   }

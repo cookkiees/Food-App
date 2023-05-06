@@ -61,7 +61,7 @@ class MenuScreen extends GetView<MyDrawerController> {
                         child: ListTile(
                           title: Text(
                             controller.menus[index].title,
-                            style: const TextStyle(fontWeight: FontWeight.bold),
+                            style: const TextStyle(fontWeight: FontWeight.w700),
                           ),
                           leading: SvgPicture.asset(
                             "assets/icons/${controller.menus[index].icon}.svg",

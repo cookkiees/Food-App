@@ -74,14 +74,15 @@ class AuthPage extends GetView<AuthController> {
                     const SizedBox(height: 24),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: const [
-                        ButtonSignInSocialWidget(
+                      children: [
+                        const ButtonSignInSocialWidget(
                           title: "FACEBOOK",
                           icon: "facebook",
                         ),
                         ButtonSignInSocialWidget(
                           title: "GOOGLE",
                           icon: "google",
+                          onTap: () => controller.handleSignIn(),
                         ),
                       ],
                     ),
