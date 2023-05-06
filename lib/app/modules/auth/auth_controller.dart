@@ -71,7 +71,6 @@ class AuthController extends GetxController {
           return;
         }
 
-        isLogin(true);
         Get.toNamed(AppRouters.main);
       } else {
         debugPrint("Gagal Login");

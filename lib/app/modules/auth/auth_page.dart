@@ -80,10 +80,11 @@ class AuthPage extends GetView<AuthController> {
                           icon: "facebook",
                         ),
                         ButtonSignInSocialWidget(
-                          title: "GOOGLE",
-                          icon: "google",
-                          onTap: () => controller.handleSignIn(),
-                        ),
+                            title: "GOOGLE",
+                            icon: "google",
+                            onTap: () {
+                              controller.handleSignIn();
+                            }),
                       ],
                     ),
                     const SizedBox(height: 32),

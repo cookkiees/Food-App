@@ -10,11 +10,15 @@ class CardPopularItemWidget extends StatelessWidget {
     required this.price,
     required this.rate,
     required this.reviewed,
+    required this.foodName,
+    required this.addOn,
   });
   final String image;
   final String price;
   final String rate;
   final String reviewed;
+  final String foodName;
+  final String addOn;
 
   @override
   Widget build(BuildContext context) {
@@ -69,6 +73,24 @@ class CardPopularItemWidget extends StatelessWidget {
                 ),
               ),
             ),
+            Positioned(
+              bottom: 8,
+              left: 8,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    foodName,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    addOn,
+                    style: const TextStyle(fontSize: 12),
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),

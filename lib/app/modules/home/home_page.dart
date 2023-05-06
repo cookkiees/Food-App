@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:food_app/app/components/appbar_widget.dart';
-import 'package:food_app/app/modules/home/home_controller.dart';
-import 'package:food_app/app/utils/my_colors.dart';
 import 'package:get/get.dart';
-
+import '../../components/appbar_widget.dart';
+import '../../utils/my_colors.dart';
+import 'home_controller.dart';
 import 'widgets/card_popular_item_widget.dart';
 import 'widgets/card_product_restaurants_widget.dart';
 import 'widgets/form_title_widget.dart';
@@ -50,12 +49,12 @@ class HomePage extends GetView<HomeController> {
                           fillColor: Colors.white,
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
-                              borderSide:
-                                  const BorderSide(color: MyColors.orange)),
+                              borderSide: const BorderSide(
+                                  width: 0.5, color: MyColors.orange)),
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
-                              borderSide:
-                                  BorderSide(color: Colors.grey.shade400)),
+                              borderSide: BorderSide(
+                                  width: 0.5, color: Colors.grey.shade400)),
                           prefixIconColor: controller.isFocused.value
                               ? MyColors.orange
                               : null,
@@ -163,6 +162,8 @@ class HomePage extends GetView<HomeController> {
                           var popularItem = controller.popular[index];
 
                           return CardPopularItemWidget(
+                            foodName: popularItem.foodName!,
+                            addOn: popularItem.addOn![0],
                             image: popularItem.image!,
                             price: popularItem.price.toString(),
                             rate: popularItem.rate.toString(),
@@ -170,7 +171,8 @@ class HomePage extends GetView<HomeController> {
                           );
                         },
                       ),
-                    )
+                    ),
+                    const SizedBox(height: 16),
                   ],
                 ),
               ),
