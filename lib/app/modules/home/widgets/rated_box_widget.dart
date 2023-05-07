@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/app/utils/my_colors.dart';
 
 class RatedBoxWidget extends StatelessWidget {
   const RatedBoxWidget({
@@ -30,7 +31,7 @@ class RatedBoxWidget extends StatelessWidget {
           const Icon(
             Icons.star,
             size: 20.0,
-            color: Colors.yellow,
+            color: MyColors.gold,
           ),
           Text(
             '($reviewed+)',

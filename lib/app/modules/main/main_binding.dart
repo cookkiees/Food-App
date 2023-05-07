@@ -1,4 +1,4 @@
-import 'package:food_app/app/modules/home/home_controller.dart';
+import 'package:food_app/app/modules/home/controller/home_controller.dart';
 import 'package:get/get.dart';
 
 import 'controller/main_controller.dart';

@@ -1,5 +1,6 @@
 class Product {
   Product({
+    this.imageUrl,
     this.restaurant,
     this.image,
     this.rate,
@@ -18,6 +19,7 @@ class Product {
   final String? restaurant;
   final String? foodName;
   final String? image;
+  final String? imageUrl;
   final String? timeDelivery;
   final String? logo;
   final String? description;

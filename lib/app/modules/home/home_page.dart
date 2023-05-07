@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:food_app/app/modules/home/views/pizza_page.dart';
 import 'package:get/get.dart';
 import '../../components/appbar_widget.dart';
 import '../../utils/my_colors.dart';
-import 'home_controller.dart';
+import 'controller/home_controller.dart';
 import 'widgets/card_popular_item_widget.dart';
 import 'widgets/card_product_restaurants_widget.dart';
 import 'widgets/form_title_widget.dart';
@@ -97,15 +98,20 @@ class HomePage extends GetView<HomeController> {
                         itemCount: 6,
                         itemBuilder: (context, index) => Obx(
                           () => MenuItemWidget(
-                            boxColor: controller.tabIndex.value == index
+                            boxColor: controller.tabIndexMenu.value == index
                                 ? MyColors.orange
                                 : Colors.white,
-                            titleColor: controller.tabIndex.value == index
+                            titleColor: controller.tabIndexMenu.value == index
                                 ? Colors.white
                                 : Colors.black,
                             icon: controller.menuItem[index].icon,
                             title: controller.menuItem[index].title,
-                            onTap: () => controller.changeTabIndex(index),
+                            onTap: () {
+                              controller.changeTabIndexMenu(index);
+                              if (index == 2) {
+                                Get.to(const PizzaPage());
+                              }
+                            },
                           ),
                         ),
                       ),
@@ -125,6 +131,7 @@ class HomePage extends GetView<HomeController> {
                           var featured = controller.productRestaurants[index];
 
                           return CardFeaturedRestaurant(
+                            onTap: () => controller.onItemClick(index),
                             image: featured.image!,
                             restaurants: featured.restaurant!,
                             timeDelivery: featured.timeDelivery!,
@@ -162,9 +169,10 @@ class HomePage extends GetView<HomeController> {
                           var popularItem = controller.popular[index];
 
                           return CardPopularItemWidget(
+                            onTap: () => controller.toDetail(index),
                             foodName: popularItem.foodName!,
                             addOn: popularItem.addOn![0],
-                            image: popularItem.image!,
+                            image: popularItem.imageUrl!,
                             price: popularItem.price.toString(),
                             rate: popularItem.rate.toString(),
                             reviewed: popularItem.reviewed.toString(),
@@ -172,7 +180,6 @@ class HomePage extends GetView<HomeController> {
                         },
                       ),
                     ),
-                    const SizedBox(height: 16),
                   ],
                 ),
               ),

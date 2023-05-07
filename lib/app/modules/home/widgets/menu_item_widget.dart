@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../home_controller.dart';
+import '../controller/home_controller.dart';
 
 class MenuItemWidget extends GetView<HomeController> {
   const MenuItemWidget({

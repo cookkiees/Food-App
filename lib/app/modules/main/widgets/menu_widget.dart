@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:food_app/app/utils/my_colors.dart';
 import 'package:get/get.dart';
-
+import '../../../components/normal_button_widget.dart';
 import '../controller/mydrawer_controller.dart';
 
 class MenuScreen extends GetView<MyDrawerController> {
@@ -73,40 +72,11 @@ class MenuScreen extends GetView<MyDrawerController> {
                 ),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 16),
-              child: Align(
-                alignment: Alignment.bottomLeft,
-                child: Container(
-                  width: 140,
-                  height: 50,
-                  padding: const EdgeInsets.symmetric(vertical: 6),
-                  decoration: BoxDecoration(
-                    color: MyColors.orange,
-                    borderRadius: BorderRadius.circular(32),
-                  ),
-                  child: Row(
-                    children: [
-                      CircleAvatar(
-                        radius: 28.0,
-                        backgroundColor: MyColors.background,
-                        child: SvgPicture.asset(
-                          "assets/icons/Logout.svg",
-                          height: 26,
-                        ),
-                      ),
-                      const Text(
-                        "Logout",
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: MyColors.background,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+            const NormalButtonWidget(
+              width: 140,
+              icon: "assets/icons/Logout.svg",
+              title: "Logout",
+              alignment: Alignment.bottomLeft,
             )
           ],
         ),
