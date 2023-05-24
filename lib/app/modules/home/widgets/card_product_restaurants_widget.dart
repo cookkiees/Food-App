@@ -69,7 +69,7 @@ class CardFeaturedRestaurant extends GetView<HomeController> {
                               const Icon(
                                 Icons.star,
                                 size: 20.0,
-                                color: Colors.yellow,
+                                color: MyColors.gold,
                               ),
                               Text(
                                 '($reviewed+)',

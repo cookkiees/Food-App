@@ -9,6 +9,9 @@ import '../../routings/app_routers.dart';
 
 class AuthController extends GetxController {
   var isLogin = false.obs;
+  var isObscure = true.obs;
+
+  void toggleObscure() => isObscure.toggle();
 
   GoogleSignIn googleSignIn = GoogleSignIn();
 
@@ -65,10 +68,6 @@ class AuthController extends GetxController {
             "lastSignInTime":
                 userCredential!.user!.metadata.lastSignInTime!.toIso8601String()
           });
-        }
-
-        if (user == null) {
-          return;
         }
 
         Get.toNamed(AppRouters.main);

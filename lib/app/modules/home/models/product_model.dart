@@ -1,20 +1,22 @@
 class Product {
-  Product({
-    this.imageUrl,
-    this.restaurant,
-    this.image,
-    this.rate,
-    this.reviewed,
-    this.type,
-    this.timeDelivery,
-    this.foodName,
-    this.addOn,
-    this.description,
-    this.price,
-    this.addOnPrice,
-    this.addOnImage,
-    this.logo,
-  });
+  Product(
+      {this.id,
+      this.imageUrl,
+      this.restaurant,
+      this.image,
+      this.rate,
+      this.reviewed,
+      this.type,
+      this.timeDelivery,
+      this.foodName,
+      this.addOn,
+      this.description,
+      this.price,
+      this.addOnPrice,
+      this.addOnImage,
+      this.logo,
+      this.quantity = 1});
+  int quantity;
 
   final String? restaurant;
   final String? foodName;
@@ -25,6 +27,7 @@ class Product {
   final String? description;
   final double? price;
   final double? rate;
+  final int? id;
   final int? reviewed;
   final List<String>? type;
   final List<String>? addOn;

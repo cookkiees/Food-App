@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:food_app/app/modules/home/views/pizza_page.dart';
+import 'package:food_app/app/modules/home/views/pizza/pizza_page.dart';
 import 'package:get/get.dart';
 import '../../components/appbar_widget.dart';
 import '../../utils/my_colors.dart';

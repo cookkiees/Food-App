@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:food_app/app/modules/cart/cart_page.dart';
 import 'package:food_app/app/modules/home/home_page.dart';
 import 'package:food_app/app/utils/my_colors.dart';
 import 'package:get/get.dart';
@@ -18,7 +19,7 @@ class MainPage extends GetView<MainController> {
           children: [
             const HomePage(),
             Container(),
-            Container(),
+            const CartPage(),
             Container(),
             Container(),
           ],

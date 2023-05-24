@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/app/modules/home/views/pizza_page.dart';
+import 'package:food_app/app/modules/home/views/pizza/pizza_page.dart';
 import 'package:food_app/app/routings/app_routers.dart';
 import 'package:get/get.dart';
 
 import '../models/menu_item_models.dart';
 import '../models/product_model.dart';
+import '../views/pizza/low_price_page.dart';
+import '../views/pizza/popular_page.dart';
+import '../views/pizza/reccommended_page.dart';
 
 class HomeController extends GetxController {
   late FocusNode myFocusNode;
@@ -61,6 +64,7 @@ class HomeController extends GetxController {
 
   var popular = [
     Product(
+      id: 2,
       foodName: "Pasta",
       imageUrl: 'assets/images/Pasta.png',
       image:
@@ -79,6 +83,7 @@ class HomeController extends GetxController {
       addOnPrice: [2.30, 4.70, 2.50],
     ),
     Product(
+      id: 3,
       foodName: "Pizza",
       imageUrl: 'assets/images/Pizza.png',
       image:
@@ -97,6 +102,7 @@ class HomeController extends GetxController {
       addOnPrice: [2.30, 4.70, 2.50],
     ),
     Product(
+      id: 4,
       foodName: "Hot-dog",
       image: 'assets/images/high-angle-three-hot-dogs-with-salad-sauce.jpg',
       imageUrl: 'assets/images/Hot-dog.jpg',
@@ -124,6 +130,7 @@ class HomeController extends GetxController {
 
   var productRestaurants = [
     Product(
+      id: 0,
       restaurant: "McDonald's",
       foodName: 'Ground Beef Tacos',
       image: 'assets/images/McDonald.png',
@@ -143,6 +150,7 @@ class HomeController extends GetxController {
       addOnPrice: [2.30, 4.70, 2.50],
     ),
     Product(
+      id: 1,
       restaurant: "Starbucks",
       foodName: 'Cheese Beef',
       image: 'assets/images/Starbucks.png',
@@ -170,15 +178,100 @@ class HomeController extends GetxController {
     }
   }
 
-  var count = 0.obs;
+  final List<String> items = [
+    'Popular',
+    'High Price',
+    'Low Price',
+    'Recommendation',
+    'Closest Distance'
+  ];
 
-  void increment() {
-    count.value++;
+  final List<Widget> pages = [
+    const ReccommendedPage(),
+    const PopularPage(),
+    const LowPricePage()
+  ];
+
+  final RxInt selectedIndex = 0.obs;
+
+  void onMenuItemSelected(int index) {
+    selectedIndex.value = index;
   }
 
-  void decrement() {
-    if (count.value > 0) {
-      count.value--;
+  final menuItems = [
+    MenuItems(id: 0, text: 'Recommended'),
+    MenuItems(id: 1, text: 'Popular'),
+    MenuItems(id: 2, text: 'Low Price'),
+  ];
+
+  final RxList<Product> cartItems = RxList<Product>([]);
+
+  void addItemToCart(int id) {
+    final product = productRestaurants.firstWhere((p) => p.id == id);
+
+    // Cari apakah item dengan id yang sama sudah ada di cart
+    bool itemFound = false;
+    for (int i = 0; i < cartItems.length; i++) {
+      if (cartItems[i].id == id) {
+        // Item ditemukan, tambahkan quantity-nya
+        cartItems[i].quantity++;
+        itemFound = true;
+        break;
+      }
+    }
+
+    // Jika item belum ditemukan, tambahka n item baru ke cart
+    if (!itemFound) {
+      product.quantity = 1;
+
+      cartItems.add(product);
     }
   }
+
+  void removeItemFromCart(int id) {
+    final productIndex = cartItems.indexWhere((i) => i.id == id);
+    if (productIndex != -1) {
+      cartItems.removeAt(productIndex);
+    }
+  }
+
+  var isLoading = false.obs;
+
+  void increment(Product item) {
+    var index = cartItems.indexWhere((i) => i.id == item.id);
+    isLoading(true);
+    if (index != -1) {
+      cartItems[index].quantity++;
+    }
+    isLoading(false);
+  }
+
+  void decrement(Product item) {
+    var index = cartItems.indexWhere((i) => i.id == item.id);
+    isLoading(true);
+    if (index != -1) {
+      if (cartItems[index].quantity > 1) {
+        cartItems[index].quantity--;
+      } else {
+        removeItemFromCart(cartItems[index].id ?? 0);
+      }
+    }
+    isLoading(false);
+  }
+
+  double get totalPriceProduct {
+    double total = 0.0;
+    for (var item in cartItems) {
+      total += item.price! * item.quantity;
+    }
+    isLoading(false);
+    return total;
+  }
+}
+
+class MenuItems {
+  final int id;
+  final String text;
+
+  MenuItems({required this.id, required this.text});
 }

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/app/modules/auth/auth_controller.dart';
-import 'package:food_app/app/routings/app_routers.dart';
-import 'package:food_app/app/utils/my_colors.dart';
-import 'package:get/get.dart';
 
-import 'widgets/button_signin_social_widget.dart';
+import 'package:get/get.dart';
+import '../../routings/app_routers.dart';
+import '../../utils/my_colors.dart';
+import 'auth_controller.dart';
+import 'widgets/signin_with_sosial_media_widget.dart';
 import 'widgets/title_widget.dart';
 
 class AuthPage extends GetView<AuthController> {
@@ -53,43 +53,10 @@ class AuthPage extends GetView<AuthController> {
                 const TitleWidget(),
                 Column(
                   children: [
-                    Row(
-                      children: const [
-                        Expanded(
-                            child: Divider(
-                          color: Colors.black,
-                          indent: 20,
-                          endIndent: 20,
-                        )),
-                        Text("Sign in with"),
-                        Expanded(
-                          child: Divider(
-                            color: Colors.black,
-                            indent: 20,
-                            endIndent: 20,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 24),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        const ButtonSignInSocialWidget(
-                          title: "FACEBOOK",
-                          icon: "facebook",
-                        ),
-                        ButtonSignInSocialWidget(
-                            title: "GOOGLE",
-                            icon: "google",
-                            onTap: () {
-                              controller.handleSignIn();
-                            }),
-                      ],
-                    ),
+                    const SignInWithSosialMediaWidget(),
                     const SizedBox(height: 32),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () => Get.toNamed(AppRouters.register),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: MyColors.orange,
                         minimumSize: const Size(320, 50),
@@ -108,7 +75,7 @@ class AuthPage extends GetView<AuthController> {
                     ),
                     const SizedBox(height: 32),
                     InkWell(
-                      onTap: () {},
+                      onTap: () => Get.toNamed(AppRouters.login),
                       child: RichText(
                         text: const TextSpan(
                           children: <TextSpan>[

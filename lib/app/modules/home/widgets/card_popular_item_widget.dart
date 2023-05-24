@@ -13,6 +13,9 @@ class CardPopularItemWidget extends StatelessWidget {
     required this.foodName,
     required this.addOn,
     this.onTap,
+    this.width = 154,
+    this.imageHeight = 150,
+    this.height = 215,
   });
   final String image;
   final String price;
@@ -20,6 +23,10 @@ class CardPopularItemWidget extends StatelessWidget {
   final String reviewed;
   final String foodName;
   final String addOn;
+  final double? width;
+  final double? height;
+  final double? imageHeight;
+
   final Function()? onTap;
 
   @override
@@ -29,15 +36,15 @@ class CardPopularItemWidget extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: Container(
-          height: 215,
-          width: 154,
+          height: height,
+          width: width,
           decoration: BoxDecoration(
               color: Colors.white70, borderRadius: BorderRadius.circular(16)),
           child: Stack(
             children: [
               SizedBox(
-                height: 150,
-                width: 154,
+                height: imageHeight,
+                width: width,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(16),
                   child: Image.asset(

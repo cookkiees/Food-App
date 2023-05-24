@@ -10,11 +10,13 @@ class NormalButtonWidget extends StatelessWidget {
     required this.icon,
     required this.title,
     required this.alignment,
+    this.onTap,
   });
   final double width;
   final String icon;
   final String title;
   final AlignmentGeometry alignment;
+  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -22,33 +24,36 @@ class NormalButtonWidget extends StatelessWidget {
       padding: const EdgeInsets.only(left: 16),
       child: Align(
         alignment: alignment,
-        child: Container(
-          width: width,
-          height: 50,
-          padding: const EdgeInsets.symmetric(vertical: 6),
-          decoration: BoxDecoration(
-            color: MyColors.orange,
-            borderRadius: BorderRadius.circular(32),
-          ),
-          child: Row(
-            children: [
-              CircleAvatar(
-                radius: 28.0,
-                backgroundColor: MyColors.background,
-                child: SvgPicture.asset(
-                  icon,
-                  height: 26,
+        child: InkWell(
+          onTap: onTap,
+          child: Container(
+            width: width,
+            height: 50,
+            padding: const EdgeInsets.symmetric(vertical: 6),
+            decoration: BoxDecoration(
+              color: MyColors.orange,
+              borderRadius: BorderRadius.circular(32),
+            ),
+            child: Row(
+              children: [
+                CircleAvatar(
+                  radius: 28.0,
+                  backgroundColor: MyColors.background,
+                  child: SvgPicture.asset(
+                    icon,
+                    height: 26,
+                  ),
                 ),
-              ),
-              Text(
-                title,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: MyColors.background,
+                Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: MyColors.background,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

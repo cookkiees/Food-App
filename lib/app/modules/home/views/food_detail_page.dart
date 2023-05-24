@@ -7,7 +7,9 @@ import 'package:food_app/app/utils/my_colors.dart';
 import '../../../components/normal_button_widget.dart';
 
 class FoodDetailPage extends GetView<HomeController> {
-  const FoodDetailPage({super.key});
+  const FoodDetailPage({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -135,43 +137,6 @@ class FoodDetailPage extends GetView<HomeController> {
                             ],
                           ),
                         ),
-                        Obx(
-                          () => Row(
-                            children: [
-                              ElevatedButton(
-                                onPressed: () => controller.decrement(),
-                                style: ElevatedButton.styleFrom(
-                                  elevation: 0,
-                                  backgroundColor: MyColors.background,
-                                  shape: const CircleBorder(
-                                    side: BorderSide(color: MyColors.orange),
-                                  ),
-                                ),
-                                child: const Icon(
-                                  Icons.remove,
-                                  color: MyColors.orange,
-                                ),
-                              ),
-                              Text(
-                                '${controller.count.value < 10 ? '0' : ''}${controller.count.value}',
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18,
-                                ),
-                              ),
-                              ElevatedButton(
-                                onPressed: () => controller.increment(),
-                                style: ElevatedButton.styleFrom(
-                                    elevation: 0,
-                                    backgroundColor: MyColors.orange,
-                                    shape: const CircleBorder()),
-                                child: const Icon(
-                                  Icons.add,
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
                       ],
                     ),
                   ),
@@ -256,7 +221,23 @@ class FoodDetailPage extends GetView<HomeController> {
                     ),
                   ),
                   const SizedBox(height: 50),
-                  const NormalButtonWidget(
+                  NormalButtonWidget(
+                    onTap: () {
+                      var item = foodDetail.id;
+                      controller.addItemToCart(item);
+                      Get.snackbar(
+                        foodDetail.foodName,
+                        'Add to cart',
+                        snackPosition: SnackPosition.BOTTOM,
+                        backgroundColor: MyColors.orange,
+                        colorText: Colors.white,
+                        borderRadius: 10.0,
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 20.0),
+                        snackStyle: SnackStyle.FLOATING,
+                        animationDuration: const Duration(milliseconds: 300),
+                      );
+                    },
                     width: 160,
                     icon: "assets/icons/Cart.svg",
                     title: "Add to Cart",
