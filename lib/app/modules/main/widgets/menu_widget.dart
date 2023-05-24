@@ -28,9 +28,9 @@ class MenuScreen extends GetView<MyDrawerController> {
                   ),
                 ),
                 const SizedBox(height: 24),
-                Column(
+                const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children: [
                     Text(
                       "Farion Wick",
                       style:
