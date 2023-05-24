@@ -8,4 +8,11 @@ class MainController extends GetxController {
     zoomDrawerController.toggle?.call();
     update();
   }
+
+  var tabIndex = 0;
+
+  void changeTabIndex(index) {
+    tabIndex = index;
+    update();
+  }
 }

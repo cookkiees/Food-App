@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "913638894218",
+    "project_id": "food-app-crackers",
+    "storage_bucket": "food-app-crackers.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:913638894218:android:ee4ba2cb5aefedfd44db73",
+        "android_client_info": {
+          "package_name": "com.example.food_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "913638894218-6ve4brmnotmtqp1t58rnkd8frfcnsu02.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANH733ooG6pnX7sCdSoircKWdNbVBkXYY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "913638894218-6ve4brmnotmtqp1t58rnkd8frfcnsu02.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
